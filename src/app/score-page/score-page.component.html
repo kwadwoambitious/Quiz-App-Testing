@@ -1,0 +1,21 @@
+<main>
+  <div class="quiz-status">
+    <h2>Quiz completed</h2>
+    <p>You scored...</p>
+  </div>
+  <div class="score-container">
+    <div>
+      <p class="subject-name">
+        <img
+          *ngIf="subjectImage"
+          [src]="subjectImage"
+          alt="{{ subjectName }}"
+        />
+        <span> {{ subjectName }}</span>
+      </p>
+      <span class="score">{{ correctAnswers }}</span>
+      <p class="total-score">out of {{ totalQuestions }}</p>
+    </div>
+    <button type="button">Play Again</button>
+  </div>
+</main>

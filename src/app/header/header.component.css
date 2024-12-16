@@ -1,0 +1,58 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 80px;
+}
+header h2 {
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  gap: 18px;
+  font-weight: 500;
+}
+nav {
+  display: flex;
+  align-items: center;
+}
+nav div {
+  margin: 0 8px;
+}
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.theme-toggle .toggle-checkbox {
+  display: none;
+}
+.theme-toggle .toggle-label {
+  width: 40px;
+  height: 20px;
+  background-color: #757575;
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+}
+.theme-toggle .toggle-label::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background-color: white;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.3s ease;
+}
+.theme-toggle .toggle-checkbox:checked + .toggle-label {
+  background-color: #a445ed;
+}
+.theme-toggle .toggle-checkbox:checked + .toggle-label::before {
+  transform: translateX(20px);
+}
+@media screen and (max-width: 700px) {
+  header {
+    margin-bottom: 60px;
+  }
+}

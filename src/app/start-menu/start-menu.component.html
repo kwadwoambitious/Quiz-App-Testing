@@ -1,0 +1,25 @@
+<app-header></app-header>
+<main>
+  <div class="welcome-text">
+    <h2>Welcome to the <span>Frontend Quiz!</span></h2>
+    <p class="instruction">Pick a subject to get started.</p>
+  </div>
+  <div class="subjects">
+    <div class="subject" (click)="selectSubject('HTML')">
+      <img src="/html.png" alt="html icon" />
+      <p>HTML</p>
+    </div>
+    <div class="subject" (click)="selectSubject('CSS')">
+      <img src="/css.png" alt="css icon" />
+      <p>CSS</p>
+    </div>
+    <div class="subject" (click)="selectSubject('JavaScript')">
+      <img src="/js.png" alt="js icon" />
+      <p>JavaScript</p>
+    </div>
+    <div class="subject" (click)="selectSubject('Accessibility')">
+      <img src="/accessibility.png" alt="accessibility icon" />
+      <p>Accessibility</p>
+    </div>
+  </div>
+</main>

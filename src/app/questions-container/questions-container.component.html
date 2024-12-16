@@ -1,0 +1,97 @@
+@if (!quizCompleted) {
+<app-header
+  [subjectName]="selectedQuiz?.title"
+  [subjectImage]="selectedQuiz?.icon"
+></app-header>
+
+<main>
+  @if (selectedQuiz) {
+  <div class="questions-container">
+    <div class="question-container">
+      <p class="question-number">
+        Question {{ currentQuestionIndex + 1 }} of
+        {{ selectedQuiz.questions.length }}
+      </p>
+      <h2 class="question">
+        {{ selectedQuiz.questions[currentQuestionIndex].question }}
+      </h2>
+      <progress
+        class="progress-bar"
+        [value]="currentQuestionIndex + 1"
+        [max]="selectedQuiz.questions.length"
+      ></progress>
+    </div>
+
+    <div class="options">
+      <ul class="options-list">
+        @for (option of selectedQuiz.questions[currentQuestionIndex].options;
+        let index = $index; track option) {
+        <li
+          class="option-item"
+          [ngClass]="{
+                  'disabled-option': isOptionDisabled(),
+                }"
+          (click)="selectOption(option)"
+        >
+          <input
+            type="radio"
+            [name]="'question-' + currentQuestionIndex"
+            class="hidden-input"
+            [value]="option"
+            [disabled]="isOptionDisabled()"
+          />
+          <div
+            class="option"
+            [ngClass]="{
+              correct: selectedAnswer === option && isCorrect(option),
+              incorrect: selectedAnswer === option && !isCorrect(option)
+            }"
+          >
+            <span class="option-text">{{ getOptionLabel(index) }}</span>
+            <p>{{ option }}</p>
+            @if (selectedAnswer === option) {
+            <p class="icon">
+              @if (isCorrect(option)) {
+              <img
+                src="/fluent_checkmark-circle-16-regular.png"
+                alt="Correct icon"
+              />
+              } @else {
+              <img
+                src="/fluent_dismiss-circle-16-regular.svg"
+                alt="Incorrect icon"
+              />
+              }
+            </p>
+            }
+          </div>
+        </li>
+        }
+      </ul>
+
+      <button type="button" class="submit-button" (click)="handleSubmit()">
+        {{ isLastQuestion ? "Submit Answer" : "Next Question" }}
+      </button>
+
+      @if (errorMessage) {
+      <p class="no-answer-error">
+        <img src="/fluent_dismiss-circle-16-regular.svg" alt="dismiss-circle" />
+        <span class="error-message"> {{ errorMessage }}</span>
+      </p>
+      }
+    </div>
+  </div>
+  } @else {
+  <div>
+    <p>Please select a valid subject to view the quiz questions.</p>
+  </div>
+  }
+</main>
+} @else {
+<app-score-page
+  [correctAnswers]="correctAnswers"
+  [totalQuestions]="selectedQuiz?.questions?.length || 0"
+  [subjectName]="selectedQuiz?.title"
+  [subjectImage]="selectedQuiz?.icon"
+></app-score-page>
+}

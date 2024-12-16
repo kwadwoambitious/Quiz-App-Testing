@@ -1,0 +1,58 @@
+main {
+  display: flex;
+  gap: 100px;
+  width: 100%;
+}
+main h2 {
+  font-weight: 300;
+  font-size: 50px;
+  margin-bottom: 48px;
+  color: #313e51;
+}
+main h2 span {
+  font-weight: 600;
+}
+main .instruction {
+  font-weight: 400;
+  font-style: italic;
+  font-size: 15px;
+  color: #626c7f;
+}
+.welcome-text {
+  width: 50%;
+}
+.subjects {
+  width: 50%;
+}
+.subject {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  box-shadow: 2px 1px 9px rgb(0, 0, 0, 0.2);
+  padding: 20px;
+  margin-bottom: 24px;
+  border-radius: 24px;
+  border: 2px solid white;
+  transition: all 0.3s ease;
+}
+.subject img {
+  display: inline-block;
+}
+.subject p {
+  color: #313e51;
+  font-weight: 500;
+  font-size: 18px;
+  margin-left: 15px;
+}
+.subject:hover {
+  border: 2px solid #a729f5;
+  cursor: pointer;
+}
+@media screen and (max-width: 800px) {
+  main{
+    flex-direction: column;
+  }
+  .welcome-text, .subjects {
+    width: 100%;
+  }
+}
