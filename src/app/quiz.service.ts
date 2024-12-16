@@ -7,7 +7,7 @@ import { Quiz } from './interfaces';
   providedIn: 'root',
 })
 export class QuizService {
-  constructor(private http: HttpClient) {}
+  constructor(readonly http: HttpClient) {}
 
   public getQuizzes(): Observable<{ quizzes: Quiz[] }> {
     return this.http.get<{ quizzes: Quiz[] }>('./data.json');
