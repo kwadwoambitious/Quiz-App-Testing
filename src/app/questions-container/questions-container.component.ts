@@ -26,6 +26,7 @@ export class QuestionsContainerComponent {
   constructor(private quizService: QuizService) {
     this.quizService.getQuizzes().subscribe((data) => {
       this.quizzes = data.quizzes;
+      this.filterQuiz();
     });
   }
 
